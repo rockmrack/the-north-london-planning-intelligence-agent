@@ -139,3 +139,149 @@ Last Response:
 Generate exactly 3 follow-up questions as a JSON array:
 ["question1", "question2", "question3"]
 """
+
+
+# ==================== Enhanced Prompts ====================
+
+CONTEXT_RELEVANCE_PROMPT = """You are evaluating whether a document chunk is relevant to a planning question.
+
+Question: {question}
+
+Document Chunk:
+{chunk}
+
+On a scale of 1-10, rate the relevance of this chunk to answering the question.
+Consider:
+- Does it directly address the question topic?
+- Does it provide specific guidance or regulations?
+- Is it from a relevant borough or area?
+- Does it contain actionable information?
+
+Return JSON: {{"relevance": <1-10>, "reason": "brief explanation"}}
+"""
+
+ANSWER_GROUNDING_PROMPT = """You are verifying that a planning answer is properly grounded in sources.
+
+Answer to verify:
+{answer}
+
+Source documents:
+{sources}
+
+Check each claim in the answer and verify it is supported by the sources.
+Return JSON:
+{{
+    "grounded_claims": ["list of claims that are properly sourced"],
+    "ungrounded_claims": ["list of claims NOT found in sources"],
+    "confidence": <0.0-1.0>,
+    "issues": ["any accuracy issues found"]
+}}
+"""
+
+MULTI_HOP_REASONING_PROMPT = """You need to answer a complex planning question that requires combining
+information from multiple sources.
+
+Question: {question}
+
+Available Context:
+{context}
+
+Step-by-step reasoning:
+1. First, identify what specific information is needed
+2. Find relevant facts from each source
+3. Combine the information logically
+4. Draw a conclusion supported by all sources
+5. Note any gaps or uncertainties
+
+Provide your reasoning and final answer with full citations.
+"""
+
+BOROUGH_SPECIFIC_CONTEXT = """
+### BOROUGH-SPECIFIC CONTEXT: {borough}
+
+Key planning considerations for {borough}:
+{borough_context}
+
+Conservation Areas in {borough}:
+{conservation_areas}
+
+Article 4 Directions:
+{article4_directions}
+
+Apply this borough-specific context when answering the question.
+"""
+
+CAMDEN_CONTEXT = """
+Camden has some of the strictest planning controls in London:
+- 40+ conservation areas covering much of the borough
+- Extensive Article 4 Directions removing permitted development rights
+- Strong protection for Victorian and Edwardian character
+- Specific policies on basements (maximum 1 storey, 50% garden coverage)
+- Hampstead, Belsize Park, and Primrose Hill have enhanced protections
+"""
+
+BARNET_CONTEXT = """
+Barnet balances development with conservation:
+- Mix of suburban and urban character areas
+- Conservation areas include Totteridge, Mill Hill, and Monken Hadley
+- Generally more permissive on extensions than Camden
+- Specific guidance on front gardens and parking
+- Character areas with tailored design guidance
+"""
+
+WESTMINSTER_CONTEXT = """
+Westminster has unique considerations:
+- Almost entirely covered by conservation areas
+- Many listed buildings and strategic views
+- Strict controls on alterations visible from public realm
+- Specific basement policies
+- Westminster Way design guidance
+- Central Activities Zone considerations
+"""
+
+BRENT_CONTEXT = """
+Brent has varied character:
+- Includes Wembley regeneration areas
+- Some conservation areas around Kilburn and Queen's Park
+- Growing tall buildings policy in town centres
+- HMO Article 4 Direction in some areas
+- Generally more permissive in non-conservation areas
+"""
+
+HARINGEY_CONTEXT = """
+Haringey has distinct areas:
+- Highgate (shared with Camden) has strict controls
+- Crouch End and Muswell Hill conservation areas
+- Wood Green growth area with different policies
+- Strong urban greening policies
+- Character area assessments for many neighbourhoods
+"""
+
+BOROUGH_CONTEXTS = {
+    "Camden": CAMDEN_CONTEXT,
+    "Barnet": BARNET_CONTEXT,
+    "Westminster": WESTMINSTER_CONTEXT,
+    "Brent": BRENT_CONTEXT,
+    "Haringey": HARINGEY_CONTEXT,
+}
+
+
+def get_enhanced_system_prompt(borough: str = None) -> str:
+    """Get enhanced system prompt with borough-specific context."""
+    base_prompt = SYSTEM_PROMPT
+
+    if borough and borough in BOROUGH_CONTEXTS:
+        borough_section = f"""
+
+### BOROUGH-SPECIFIC KNOWLEDGE: {borough}
+{BOROUGH_CONTEXTS[borough]}
+
+Apply this knowledge when answering questions about {borough}.
+"""
+        # Insert before the context section
+        base_prompt = base_prompt.replace(
+            "### CONTEXT (Retrieved from Council Documents)",
+            f"{borough_section}\n### CONTEXT (Retrieved from Council Documents)"
+        )
+
+    return base_prompt

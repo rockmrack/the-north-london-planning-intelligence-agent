@@ -1,31 +1,41 @@
 # Vercel Deployment Setup Guide
 
-## Quick Fix for 404 Error
+## 🚨 CRITICAL: Fix for 404 Error
 
 Your 404 error is happening because Vercel doesn't know your Next.js app is in the `frontend/` directory.
 
-### Solution 1: Dashboard Configuration (Easiest)
+### ✅ THE ONLY SOLUTION: Dashboard Configuration
+
+**You MUST set the Root Directory in Vercel Dashboard. There is no other way to make this work with the current project structure.**
+
+#### Step-by-Step Instructions:
 
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
-2. Select your project
+2. Select your project (or import it if you haven't)
 3. Click **Settings** → **General**
-4. Scroll to **Root Directory**
-5. Click **Edit**
-6. Enter: `frontend`
+4. Scroll down to **Root Directory**
+5. Click **Edit** button
+6. Enter: `frontend` (no slashes, just the word "frontend")
 7. Click **Save**
 8. Go to **Deployments** tab
-9. Click the **⋯** menu on latest deployment → **Redeploy**
+9. Click the **⋯** menu on the latest deployment
+10. Click **Redeploy**
 
-✅ **This is the recommended approach** - it's cleaner and doesn't require config files.
+**Screenshot reference:**
+```
+Root Directory: [Edit]
+               ↓
+Root Directory: [frontend] [Save] [Cancel]
+```
 
-### Solution 2: Using vercel.json (Alternative)
+### Why vercel.json Doesn't Work
 
-The `vercel.json` file in the root handles this automatically by telling Vercel:
-- Where to run the build (`cd frontend && npm run build`)
-- Where the output is (`frontend/.next`)
-- How to install dependencies (`cd frontend && npm install`)
+The `vercel.json` file in this repo is minimal because:
+- You **cannot** use `cd` commands in Vercel's build/install commands
+- Build commands run in isolated contexts that don't preserve directory changes
+- The proper way to handle monorepos is via the Root Directory setting
 
-If you use this approach, you don't need to set Root Directory in the dashboard.
+The error you're seeing (`sh: line 1: cd: frontend: No such file or directory`) confirms this.
 
 ## Why Did This Happen?
 

@@ -1,0 +1,46 @@
+# Don't upload these to Vercel during deployment
+backend/
+docs/
+documents/
+scripts/
+supabase/
+nginx/
+.github/
+.git/
+.vscode/
+.idea/
+
+# Docker files
+docker-compose.yml
+Dockerfile
+*.Dockerfile
+
+# Documentation
+*.md
+!README.md
+
+# Environment files
+.env*
+!.env.example
+!frontend/.env.local.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+venv/
+*.egg-info/
+
+# Testing
+coverage/
+.nyc_output/
+.pytest_cache/
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3

@@ -1,0 +1,11 @@
+{
+  "name": "north-london-planning-agent-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "dev": "cd frontend && npm run dev",
+    "start": "cd frontend && npm start"
+  },
+  "description": "North London Planning Intelligence Agent - Monorepo wrapper"
+}

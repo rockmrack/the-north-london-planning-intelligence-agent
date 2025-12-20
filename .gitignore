@@ -36,6 +36,9 @@ htmlcov/
 .mypy_cache/
 .ruff_cache/
 
+# But don't ignore frontend src/lib
+!frontend/src/lib/
+
 # Virtual environments
 venv/
 ENV/

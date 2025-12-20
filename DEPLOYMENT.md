@@ -25,13 +25,16 @@ The application is split into two parts:
 
 ### Step 2: Configure Build Settings
 
-The project is already configured via [vercel.json](vercel.json). Verify these settings in Vercel:
+**IMPORTANT**: In the Vercel project settings, you MUST configure:
 
-- **Framework Preset**: Next.js
-- **Root Directory**: Leave as root (vercel.json handles the frontend subdirectory)
-- **Build Command**: `cd frontend && npm run build`
-- **Output Directory**: `frontend/.next`
-- **Install Command**: `cd frontend && npm install`
+1. **Root Directory**: `frontend` (click "Edit" and set this to `frontend`)
+2. **Framework Preset**: Next.js (auto-detected)
+3. Leave other settings as default - Vercel will auto-detect:
+   - Build Command: `npm run build`
+   - Output Directory: `.next`
+   - Install Command: `npm install`
+
+The [vercel.json](vercel.json) file handles additional configuration (headers, regions, caching).
 
 ### Step 3: Environment Variables
 

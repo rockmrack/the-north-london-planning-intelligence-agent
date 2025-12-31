@@ -36,6 +36,9 @@ coverage/
 .nyc_output/
 .pytest_cache/
 
+# Keep frontend coverage route
+!frontend/src/app/coverage/
+
 # Logs
 logs/
 *.log

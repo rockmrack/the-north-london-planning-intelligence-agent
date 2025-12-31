@@ -10,11 +10,22 @@ import { cn } from '@/lib/utils';
 export function ChatWidget() {
   const { isOpen, setIsOpen } = useChatStore();
   const [isMinimized, setIsMinimized] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Fix hydration mismatch with Zustand persist
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Debug logging
   useEffect(() => {
-    console.log('ChatWidget: isOpen =', isOpen);
-  }, [isOpen]);
+    console.log('ChatWidget: isOpen =', isOpen, 'mounted =', mounted);
+  }, [isOpen, mounted]);
+
+  // Prevent hydration mismatch by not rendering until client-side mount
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>

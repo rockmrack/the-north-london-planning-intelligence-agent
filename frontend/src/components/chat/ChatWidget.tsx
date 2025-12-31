@@ -13,23 +13,27 @@ export function ChatWidget() {
     <>
       {/* Chat Button */}
       {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className={cn(
-            'fixed bottom-6 right-6 z-[9999]',
-            'w-14 h-14 rounded-full',
-            'bg-blue-700 text-white shadow-lg',
-            'flex items-center justify-center',
-            'hover:bg-blue-800 transition-colors',
-            'focus:outline-none focus:ring-2 focus:ring-blue-500',
-            'cursor-pointer'
-          )}
-          aria-label="Open chat"
-          type="button"
-        >
-          <MessageCircle className="w-6 h-6" />
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse" />
-        </button>
+        <div className="fixed bottom-6 right-6 z-[9999] flex items-center gap-3">
+          <div className="bg-white text-gray-800 px-4 py-2 rounded-full shadow-lg font-medium text-sm animate-bounce">
+            Planning Permission Assistant
+          </div>
+          <button
+            onClick={() => setIsOpen(true)}
+            className={cn(
+              'w-14 h-14 rounded-full',
+              'bg-blue-700 text-white shadow-lg',
+              'flex items-center justify-center',
+              'hover:bg-blue-800 transition-colors',
+              'focus:outline-none focus:ring-2 focus:ring-blue-500',
+              'cursor-pointer'
+            )}
+            aria-label="Open chat"
+            type="button"
+          >
+            <MessageCircle className="w-6 h-6" />
+            <span className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse" />
+          </button>
+        </div>
       )}
 
       {/* Chat Window */}

@@ -87,6 +87,9 @@ logs/
 coverage/
 .nyc_output/
 
+# But don't ignore frontend coverage page
+!frontend/src/app/coverage/
+
 # Build artifacts
 *.tgz
 *.tar.gz

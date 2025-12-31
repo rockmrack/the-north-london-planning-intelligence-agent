@@ -142,7 +142,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
-                    <p className="text-gray-600">020 7123 4567</p>
+                    <p className="text-gray-600">07459 345456</p>
                     <p className="text-sm text-gray-500">Mon-Fri 9am-6pm</p>
                   </div>
                 </div>
@@ -164,8 +164,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Office</h3>
-                    <p className="text-gray-600">123 High Street</p>
-                    <p className="text-gray-600">Hampstead, London NW3 1AB</p>
+                    <p className="text-gray-600">Unit 3, Palace Court</p>
+                    <p className="text-gray-600">250 Finchley Road</p>
+                    <p className="text-gray-600">London NW3 6DN</p>
                   </div>
                 </div>
               </div>

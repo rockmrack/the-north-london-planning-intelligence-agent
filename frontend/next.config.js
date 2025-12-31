@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
 
-  // Base path for embedding in subdirectory
-  basePath: '/planning-ai',
-
   // Performance optimizations
   swcMinify: true,
   compress: true,

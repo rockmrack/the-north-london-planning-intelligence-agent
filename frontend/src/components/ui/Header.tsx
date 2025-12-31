@@ -25,13 +25,13 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <a
-              href="#features"
+              href="/features"
               className="text-sm text-neutral-600 hover:text-primary-700 transition-colors"
             >
               Features
             </a>
             <a
-              href="#boroughs"
+              href="/coverage"
               className="text-sm text-neutral-600 hover:text-primary-700 transition-colors"
             >
               Coverage
@@ -76,14 +76,14 @@ export function Header() {
         <div className="md:hidden border-t border-neutral-200 bg-white">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
             <a
-              href="#features"
+              href="/features"
               className="text-sm text-neutral-600 hover:text-primary-700"
               onClick={() => setIsMenuOpen(false)}
             >
               Features
             </a>
             <a
-              href="#boroughs"
+              href="/coverage"
               className="text-sm text-neutral-600 hover:text-primary-700"
               onClick={() => setIsMenuOpen(false)}
             >

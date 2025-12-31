@@ -174,6 +174,13 @@ export function ChatWindow() {
         <div ref={messagesEndRef} />
       </div>
 
+      {/* Legal Disclaimer */}
+      <div className="border-t border-neutral-200 bg-amber-50 px-4 py-2">
+        <p className="text-xs text-amber-900 leading-relaxed">
+          <span className="font-semibold">⚖️ Disclaimer:</span> I am an AI assistant trained on council documents. This is for guidance only and does not constitute legal planning advice. Always verify with our human team at Hampstead Renovations.
+        </p>
+      </div>
+
       {/* Input Area */}
       <div className="border-t border-neutral-200 p-4">
         <form onSubmit={handleSubmit} className="flex gap-2">

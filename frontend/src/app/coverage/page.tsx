@@ -80,6 +80,9 @@ export default function Coverage() {
       <Header />
       
       <div className="pt-20 pb-16">
+        <div className="text-center text-sm text-gray-500 mb-2">
+          Coverage page is live — if you still see 404 after deploy, hard refresh.
+        </div>
         {/* Hero Section */}
         <div className="bg-gradient-to-b from-green-50 to-white py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

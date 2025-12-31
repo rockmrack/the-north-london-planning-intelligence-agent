@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: 'North London Planning Intelligence Agent | Hampstead Renovations',
   description:
     'AI-powered planning permission guidance for Camden, Barnet, Westminster, Brent, and Haringey. Get instant, cited answers from official council documents.',
+  metadataBase:
+    process.env.NEXT_PUBLIC_SITE_URL
+      ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+      : undefined,
   keywords: [
     'planning permission',
     'London planning',

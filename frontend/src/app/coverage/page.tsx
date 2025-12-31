@@ -1,5 +1,6 @@
 'use client';
 
+// Coverage page for North London boroughs
 import { Header } from '@/components/ui/Header';
 import { Footer } from '@/components/ui/Footer';
 import { ChatWidget } from '@/components/chat/ChatWidget';

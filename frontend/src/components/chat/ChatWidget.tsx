@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Minimize2 } from 'lucide-react';
 import { ChatWindow } from './ChatWindow';
@@ -10,6 +10,11 @@ import { cn } from '@/lib/utils';
 export function ChatWidget() {
   const { isOpen, setIsOpen } = useChatStore();
   const [isMinimized, setIsMinimized] = useState(false);
+
+  // Debug logging
+  useEffect(() => {
+    console.log('ChatWidget: isOpen =', isOpen);
+  }, [isOpen]);
 
   return (
     <>
@@ -41,7 +46,10 @@ export function ChatWidget() {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              onClick={() => setIsOpen(true)}
+              onClick={() => {
+                console.log('Chat button clicked!');
+                setIsOpen(true);
+              }}
               className={cn(
                 'fixed bottom-6 right-6 z-50',
                 'w-14 h-14 rounded-full',

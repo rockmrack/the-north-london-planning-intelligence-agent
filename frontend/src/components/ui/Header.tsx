@@ -37,7 +37,7 @@ export function Header() {
               Coverage
             </a>
             <a
-              href="#how-it-works"
+              href="/how-it-works"
               className="text-sm text-neutral-600 hover:text-primary-700 transition-colors"
             >
               How It Works
@@ -90,7 +90,7 @@ export function Header() {
               Coverage
             </a>
             <a
-              href="#how-it-works"
+              href="/how-it-works"
               className="text-sm text-neutral-600 hover:text-primary-700"
               onClick={() => setIsMenuOpen(false)}
             >

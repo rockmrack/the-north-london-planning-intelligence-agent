@@ -10,12 +10,26 @@ import { cn } from '@/lib/utils';
 export function ChatWidget() {
   const { isOpen, setIsOpen } = useChatStore();
   const [isMinimized, setIsMinimized] = useState(false);
+  // Local fallback in case persisted store hydration glitches in production
+  const [localOpen, setLocalOpen] = useState(false);
+
+  const open = isOpen || localOpen;
+
+  const handleOpen = () => {
+    setLocalOpen(true);
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setLocalOpen(false);
+    setIsOpen(false);
+  };
 
   return (
     <>
       {/* Chat Button with Tooltip */}
       <AnimatePresence>
-        {!isOpen && (
+        {!open && (
           <>
             {/* Tooltip */}
             <motion.div
@@ -41,7 +55,7 @@ export function ChatWidget() {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              onClick={() => setIsOpen(true)}
+              onClick={handleOpen}
               className={cn(
                 'fixed bottom-6 right-6 z-50',
                 'w-14 h-14 rounded-full',
@@ -63,7 +77,7 @@ export function ChatWidget() {
 
       {/* Chat Window */}
       <AnimatePresence>
-        {isOpen && (
+        {open && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{
@@ -103,7 +117,7 @@ export function ChatWidget() {
                   <Minimize2 className="w-4 h-4" />
                 </button>
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleClose}
                   className="p-1 hover:bg-primary-600 rounded transition-colors"
                   aria-label="Close"
                 >

@@ -74,6 +74,7 @@ export const useChatStore = create<ChatState>()(
       clearMessages: () => set({ messages: [], sessionId: null, queryCount: 0 }),
 
       // UI State
+      // default closed; UI can force-open with local fallback
       isOpen: false,
       setIsOpen: (open) => set({ isOpen: open }),
       isLoading: false,

@@ -108,6 +108,7 @@ export const useChatStore = create<ChatState>()(
         userEmail: state.userEmail,
         queryCount: state.queryCount,
       }),
+      skipHydration: true,
     }
   )
 );

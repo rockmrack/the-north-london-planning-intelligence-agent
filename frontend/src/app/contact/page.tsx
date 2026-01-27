@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      
+
       <div className="pt-20 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4 text-center">
@@ -41,7 +41,7 @@ export default function Contact() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">
                 Send us a message
               </h2>
-              
+
               {submitted ? (
                 <div className="text-center py-8">
                   <div className="text-5xl mb-4">✅</div>
@@ -68,7 +68,7 @@ export default function Contact() {
                       placeholder="Your name"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                       Email *
@@ -83,7 +83,7 @@ export default function Contact() {
                       placeholder="your@email.com"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                       Phone
@@ -97,7 +97,7 @@ export default function Contact() {
                       placeholder="Your phone number"
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                       Message *
@@ -112,7 +112,7 @@ export default function Contact() {
                       placeholder="Tell us about your project..."
                     />
                   </div>
-                  
+
                   <button
                     type="submit"
                     className="w-full bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-colors flex items-center justify-center gap-2"
@@ -143,7 +143,11 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
                     <p className="text-gray-600">020 8054 8756</p>
-                    <p className="text-sm text-gray-500">Mon-Fri 9am-6pm</p>
+                    <p className="text-sm text-gray-500 flex flex-col">
+                      <span>Mon-Fri: 9am - 8pm</span>
+                      <span>Saturday: 9am - 6pm</span>
+                      <span>Sunday: By appointment</span>
+                    </p>
                   </div>
                 </div>
 
@@ -166,7 +170,7 @@ export default function Contact() {
                     <h3 className="font-semibold text-gray-900">Office</h3>
                     <p className="text-gray-600">Unit 3, Palace Court</p>
                     <p className="text-gray-600">250 Finchley Road</p>
-                    <p className="text-gray-600">London NW3 6DN</p>
+                    <p className="text-gray-600">Hampstead, London NW3 6DN</p>
                   </div>
                 </div>
               </div>

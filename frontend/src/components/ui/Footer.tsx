@@ -111,7 +111,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-primary-200">
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>123 Hampstead High St, London NW3</span>
+                <span>Unit 3, Palace Court, 250 Finchley Rd, London NW3 6DN</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
